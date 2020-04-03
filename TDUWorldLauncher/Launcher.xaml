@@ -1,0 +1,190 @@
+﻿<Window x:Class="TDUWorldLauncher.Launcher"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        AllowDrop="True"
+        WindowStyle="None"
+        ShowInTaskbar="True"
+        WindowStartupLocation="CenterScreen"
+        Icon="48.ico"
+        Foreground="Green"
+        ResizeMode="NoResize"
+        AllowsTransparency="True"
+        Title="TDU World Launcher" Height="585" Width="1016">
+    <Window.Resources>
+ 
+    <Style x:Key="FocusVisual">
+      <Setter Property="Control.Template">
+        <Setter.Value>
+          <ControlTemplate>
+            <Rectangle Margin="2"
+                       SnapsToDevicePixels="true"
+                       Stroke="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"
+                       StrokeDashArray="1 2"
+                       StrokeThickness="1" />
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+ 
+    <SolidColorBrush x:Key="Button.Static.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Button.Static.Border"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Button.MouseOver.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Button.MouseOver.Border"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Button.Pressed.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Button.Pressed.Border"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Button.Disabled.Background"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Button.Disabled.Border"
+                     Color="Transparent" />
+    <SolidColorBrush x:Key="Button.Disabled.Foreground"
+                     Color="Transparent" />
+ 
+    <Style x:Key="DefaultButtonStyle"
+           TargetType="{x:Type Button}">
+      <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
+      <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
+      <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
+      <Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="HorizontalContentAlignment" Value="Center" />
+      <Setter Property="VerticalContentAlignment" Value="Center" />
+      <Setter Property="Padding" Value="1" />
+      <Setter Property="Template">
+        <Setter.Value>
+          <ControlTemplate TargetType="{x:Type Button}">
+            <Border x:Name="border"
+                    Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}"
+                    SnapsToDevicePixels="true">
+              <ContentPresenter x:Name="contentPresenter"
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                Focusable="False"
+                                RecognizesAccessKey="True"
+                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" />
+            </Border>
+            <ControlTemplate.Triggers>
+              <Trigger Property="IsDefaulted" Value="true">
+                <Setter TargetName="border" Property="BorderBrush" Value="{DynamicResource {x:Static SystemColors.HighlightBrushKey}}" />
+              </Trigger>
+              <!--<Trigger Property="IsMouseOver" Value="true">
+                <Setter TargetName="border" Property="Background" Value="{StaticResource Button.MouseOver.Background}" />
+                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.MouseOver.Border}" />
+              </Trigger>-->
+              <Trigger Property="IsPressed" Value="true">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Export/Launch button PRESSED.png"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.Pressed.Border}" />
+              </Trigger>
+              <Trigger Property="IsEnabled" Value="false">
+                <Setter TargetName="border" Property="Background">
+                    <Setter.Value>
+                        <ImageBrush ImageSource="Export/Launch button DISABLED.png"/>
+                    </Setter.Value>
+                </Setter>
+                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource Button.Disabled.Border}" />
+                <Setter TargetName="contentPresenter" Property="TextElement.Foreground" Value="{StaticResource Button.Disabled.Foreground}" />
+              </Trigger>
+            </ControlTemplate.Triggers>
+          </ControlTemplate>
+        </Setter.Value>
+      </Setter>
+    </Style>
+    </Window.Resources>
+    <Window.Background>
+        <ImageBrush ImageSource="Export/Background.jpg"/>
+    </Window.Background>
+    <Grid x:Name="MainGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+            <RowDefinition Height="114"/>
+        </Grid.RowDefinitions>
+        <WebBrowser x:Name="WebBrowser" Grid.Column="1" Grid.Row="1" Height="287" Width="551" Visibility="Hidden">
+        </WebBrowser>
+        <Rectangle x:Name="BottomBar" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Fill="Black" Opacity="0.5"></Rectangle>
+        <Rectangle x:Name="NewsWindow" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Fill="Black" Opacity="0.5"
+                   Height="378" Width="577" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 26 26"></Rectangle>
+        <!--<Image x:Name="Image1" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Source="Export/News window complete.png" 
+               Margin="0 0 26 26" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Image>
+        <Image x:Name="Image2" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Source="Export/Bottom bar.png"
+               Margin="0 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Image>-->
+        <Ellipse x:Name="ServerStatus" Grid.Column="0" Grid.Row="1" Width="15" Height="15"
+               HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="115 0 0 22">
+        </Ellipse>
+        <!--<Image x:Name="PlayBtnPressedImage" Grid.Row="2" Grid.Column="1" Visibility="Hidden" Width="214" Height="73"  
+               Margin="0 20 24 21" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+               Source="Export/Launch button PRESSED.png" Cursor="AppStarting">
+        </Image>
+        <Image x:Name="PlayBtnDisabledImage" Grid.Row="2" Grid.Column="1" Visibility="Hidden" Width="214" Height="73" 
+               Margin="0 20 24 21" HorizontalAlignment="Right" VerticalAlignment="Bottom"
+               Source="Export/Launch button DISABLED.png" Cursor="AppStarting">
+        </Image>
+        <Image x:Name="PlayBtnImage" Grid.Row="2" Grid.Column="1" Visibility="Visible" Width="214" Height="73"
+                  Margin="0 20 24 21" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
+                  Source="Export/Launch button READY.png" Cursor="AppStarting">
+           </Image>-->
+        <TextBlock x:Name="Movable" Cursor="Hand" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Height="50" Width="1016" 
+                      MouseLeftButtonDown="PanelMove_OnMouseLeftButtonDown">
+           </TextBlock>
+        <Button x:Name="PlayBtn" Grid.Row="2" Grid.Column="1" TabIndex="0"
+                FontFamily="Microsoft Sans Serif" FontSize="36" FontStyle="Normal" Click="PlayBtn_Click"
+                Style="{DynamicResource DefaultButtonStyle}" Width="215" Height="74" Margin="0 20 24 21"
+                HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"
+                BorderThickness="0 0 0 0">
+            <Button.Background><ImageBrush ImageSource="Export/Launch button READY.png"/></Button.Background>
+        </Button>
+        <Image x:Name="Logo" Grid.Row="1" Grid.Column="0" Width="295" Height="144" HorizontalAlignment="Left" 
+               VerticalAlignment="Top" Source="Export/Launcher logo.png" Margin="62 17 62 0"></Image>
+        <Label x:Name="GameVersion" Grid.Row="2" Grid.Column="0" Content="TDU2 DLC2 v034 build 16 | TDU World Launcher v0.01" 
+               Margin="17 0 0 17" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontFamily="Calibri"
+               FontSize="12" Background="Transparent"></Label>
+        <Label x:Name="Label1" Grid.Row="1" Grid.Column="0" Content="Server Status: " FontFamily="Calibri" FontSize="15"
+               Foreground="LightGray" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+               Margin="17 0 0 17"></Label>
+        <Button x:Name="Close" Grid.Column="1" Grid.Row="0" Background="Transparent" Cursor="Hand" BorderThickness="0 0 0 0" 
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0 10 10 0"
+                FontFamily="Microsoft Sans Serif" FontSize="36" FontStyle="Normal" Foreground="White"
+                Click="Close_Btn" Height="31" Width="31" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Image Source="Export/Exit button.png"></Image>
+        </Button>
+        <Button x:Name="Minimize" Grid.Column="1" Grid.Row="0" Background="Transparent" Cursor="Hand" BorderThickness="0 0 0 0" 
+                Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0 10 50 0"
+                FontFamily="Microsoft Sans Serif" FontSize="36" FontStyle="Normal" Foreground="White"
+                Click="Minimize_OnClick" Height="29" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right">
+            <Image Source="Export/Minimize button.png"></Image>
+        </Button>
+        <Label x:Name="Label2" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Content="TDU World Launcher" HorizontalAlignment="Center" 
+                              VerticalAlignment="Top" Margin="0 10 00 0" FontSize="14" FontFamily="Calibri Light" Cursor="Hand"
+                              Background="Transparent" Foreground="Ivory" MouseLeftButtonDown="PanelMove_OnMouseLeftButtonDown">
+        </Label>
+        <Label x:Name="Label3" Grid.Row="1" Grid.Column="0" Content="Offline" 
+               HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="135 0 0 16" FontSize="15" FontFamily="Calibri"
+               Background="Transparent" Foreground="Red">
+        </Label>
+        <ProgressBar x:Name="Update1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 
+                     HorizontalAlignment="Left" Margin="17 25 0 0" Height="16" Width="746" Background="DodgerBlue" 
+                     BorderThickness="0 0 0 0" Foreground="DodgerBlue"></ProgressBar>
+        <ProgressBar x:Name="Update2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 
+                     HorizontalAlignment="Left" Margin="17 56 0 0" Height="16" Width="746" Background="LimeGreen" 
+                     BorderThickness="0 0 0 0" Foreground="LimeGreen"></ProgressBar>
+    </Grid>
+</Window>

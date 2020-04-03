@@ -1,0 +1,214 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="AuthEmu" />
+      <Folder Include="Export" />
+      <Folder Include="Resources" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="DiscordRichPresence" Version="1.0.150" />
+      <PackageReference Include="jQuery" Version="3.4.1" />
+      <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ApplicationDefinition Remove="App.xaml" />
+      <Page Include="App.xaml">
+        <Generator>MSBuild:Compile</Generator>
+      </Page>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="48.ico" />
+      <Resource Include="48.ico" />
+      <None Remove="Resources\Bottom bar.jpg" />
+      <Resource Include="Resources\Bottom bar.jpg" />
+      <None Remove="Resources\f_header.dat" />
+      <Resource Include="Resources\f_header.dat" />
+      <None Remove="Resources\f_header_end.dat" />
+      <Resource Include="Resources\f_header_end.dat" />
+      <None Remove="Resources\hall4.dat" />
+      <Resource Include="Resources\hall4.dat" />
+      <None Remove="Resources\hall4_1.dat" />
+      <Resource Include="Resources\hall4_1.dat" />
+      <None Remove="Resources\heart1.dat" />
+      <Resource Include="Resources\heart1.dat" />
+      <None Remove="Resources\heart2.dat" />
+      <Resource Include="Resources\heart2.dat" />
+      <None Remove="Resources\heart3.dat" />
+      <Resource Include="Resources\heart3.dat" />
+      <None Remove="Resources\heart4.dat" />
+      <Resource Include="Resources\heart4.dat" />
+      <None Remove="Resources\heart5.dat" />
+      <Resource Include="Resources\heart5.dat" />
+      <None Remove="Resources\heart6.dat" />
+      <Resource Include="Resources\heart6.dat" />
+      <None Remove="Export\Additional info.PNG" />
+      <Resource Include="Export\Additional info.PNG" />
+      <None Remove="Export\Background.jpg" />
+      <Resource Include="Export\Background.jpg" />
+      <None Remove="Export\Bottom bar.jpg" />
+      <Resource Include="Export\Bottom bar.jpg" />
+      <None Remove="Export\Bottom bar.png" />
+      <Resource Include="Export\Bottom bar.png" />
+      <None Remove="Export\Exit button.png" />
+      <Resource Include="Export\Exit button.png" />
+      <None Remove="Export\Launch button DISABLED.png" />
+      <Resource Include="Export\Launch button DISABLED.png" />
+      <None Remove="Export\Launch button PRESSED.png" />
+      <Resource Include="Export\Launch button PRESSED.png" />
+      <None Remove="Export\Launch button READY.png" />
+      <Resource Include="Export\Launch button READY.png" />
+      <None Remove="Export\Launcher logo.png" />
+      <Resource Include="Export\Launcher logo.png" />
+      <None Remove="Export\Minimize button.png" />
+      <Resource Include="Export\Minimize button.png" />
+      <None Remove="Export\News text.png" />
+      <Resource Include="Export\News text.png" />
+      <None Remove="Export\News window background insert.png" />
+      <Resource Include="Export\News window background insert.png" />
+      <None Remove="Export\News window background.png" />
+      <Resource Include="Export\News window background.png" />
+      <None Remove="Export\News window combined.png" />
+      <Resource Include="Export\News window combined.png" />
+      <None Remove="Export\News window complete.png" />
+      <Resource Include="Export\News window complete.png" />
+      <None Remove="Export\News.png" />
+      <Resource Include="Export\News.png" />
+      <None Remove="Export\Server icon MAINTENENCE.png" />
+      <None Remove="Export\Server icon OFFLINE.png" />
+      <Resource Include="Export\Server icon OFFLINE.png" />
+      <None Remove="Export\Server icon ONLINE.png" />
+      <Resource Include="Export\Server icon ONLINE.png" />
+      <None Remove="Export\Server icon UNKNOWN.png" />
+      <Resource Include="Export\Server icon UNKNOWN.png" />
+      <None Remove="Export\TDU World Launcher icon.png" />
+      <Resource Include="Export\TDU World Launcher icon.png" />
+      <None Remove="Resources\inCasino1.dat" />
+      <Resource Include="Resources\inCasino1.dat" />
+      <None Remove="Resources\inCasino10.dat" />
+      <Resource Include="Resources\inCasino10.dat" />
+      <None Remove="Resources\inCasino11.dat" />
+      <Resource Include="Resources\inCasino11.dat" />
+      <None Remove="Resources\inCasino12.dat" />
+      <Resource Include="Resources\inCasino12.dat" />
+      <None Remove="Resources\inCasino13.dat" />
+      <Resource Include="Resources\inCasino13.dat" />
+      <None Remove="Resources\inCasino14.dat" />
+      <Resource Include="Resources\inCasino14.dat" />
+      <None Remove="Resources\inCasino15.dat" />
+      <Resource Include="Resources\inCasino15.dat" />
+      <None Remove="Resources\inCasino16.dat" />
+      <Resource Include="Resources\inCasino16.dat" />
+      <None Remove="Resources\inCasino17.dat" />
+      <Resource Include="Resources\inCasino17.dat" />
+      <None Remove="Resources\inCasino18.dat" />
+      <Resource Include="Resources\inCasino18.dat" />
+      <None Remove="Resources\inCasino19.dat" />
+      <Resource Include="Resources\inCasino19.dat" />
+      <None Remove="Resources\inCasino2.dat" />
+      <Resource Include="Resources\inCasino2.dat" />
+      <None Remove="Resources\inCasino20.dat" />
+      <Resource Include="Resources\inCasino20.dat" />
+      <None Remove="Resources\inCasino21.dat" />
+      <Resource Include="Resources\inCasino21.dat" />
+      <None Remove="Resources\inCasino3.dat" />
+      <Resource Include="Resources\inCasino3.dat" />
+      <None Remove="Resources\inCasino4.dat" />
+      <Resource Include="Resources\inCasino4.dat" />
+      <None Remove="Resources\inCasino5.dat" />
+      <Resource Include="Resources\inCasino5.dat" />
+      <None Remove="Resources\inCasino6.dat" />
+      <Resource Include="Resources\inCasino6.dat" />
+      <None Remove="Resources\inCasino7.dat" />
+      <Resource Include="Resources\inCasino7.dat" />
+      <None Remove="Resources\inCasino8.dat" />
+      <Resource Include="Resources\inCasino8.dat" />
+      <None Remove="Resources\inCasino9.dat" />
+      <Resource Include="Resources\inCasino9.dat" />
+      <None Remove="Resources\initCasino1.dat" />
+      <Resource Include="Resources\initCasino1.dat" />
+      <None Remove="Resources\initCasino2.dat" />
+      <Resource Include="Resources\initCasino2.dat" />
+      <None Remove="Resources\server1Copy.dat" />
+      <Resource Include="Resources\server1Copy.dat" />
+      <None Remove="Resources\server1.dat" />
+      <Resource Include="Resources\server1.dat" />
+      <None Remove="Resources\server10.dat" />
+      <Resource Include="Resources\server10.dat" />
+      <None Remove="Resources\server11.dat" />
+      <Resource Include="Resources\server11.dat" />
+      <None Remove="Resources\server12.dat" />
+      <Resource Include="Resources\server12.dat" />
+      <None Remove="Resources\server13.dat" />
+      <Resource Include="Resources\server13.dat" />
+      <None Remove="Resources\server14.dat" />
+      <Resource Include="Resources\server14.dat" />
+      <None Remove="Resources\server15.dat" />
+      <Resource Include="Resources\server15.dat" />
+      <None Remove="Resources\server16.dat" />
+      <Resource Include="Resources\server16.dat" />
+      <None Remove="Resources\server17.dat" />
+      <Resource Include="Resources\server17.dat" />
+      <None Remove="Resources\server18.dat" />
+      <Resource Include="Resources\server18.dat" />
+      <None Remove="Resources\server19.dat" />
+      <Resource Include="Resources\server19.dat" />
+      <None Remove="Resources\server2.dat" />
+      <Resource Include="Resources\server2.dat" />
+      <None Remove="Resources\server20.dat" />
+      <Resource Include="Resources\server20.dat" />
+      <None Remove="Resources\server21.dat" />
+      <Resource Include="Resources\server21.dat" />
+      <None Remove="Resources\server22.dat" />
+      <Resource Include="Resources\server22.dat" />
+      <None Remove="Resources\server23.dat" />
+      <Resource Include="Resources\server23.dat" />
+      <None Remove="Resources\server24.dat" />
+      <Resource Include="Resources\server24.dat" />
+      <None Remove="Resources\server25.dat" />
+      <Resource Include="Resources\server25.dat" />
+      <None Remove="Resources\server26.dat" />
+      <Resource Include="Resources\server26.dat" />
+      <None Remove="Resources\server27.dat" />
+      <Resource Include="Resources\server27.dat" />
+      <None Remove="Resources\server28.dat" />
+      <Resource Include="Resources\server28.dat" />
+      <None Remove="Resources\server29.dat" />
+      <Resource Include="Resources\server29.dat" />
+      <None Remove="Resources\server3.dat" />
+      <Resource Include="Resources\server3.dat" />
+      <None Remove="Resources\server30.dat" />
+      <Resource Include="Resources\server30.dat" />
+      <None Remove="Resources\server31.dat" />
+      <Resource Include="Resources\server31.dat" />
+      <None Remove="Resources\server32.dat" />
+      <Resource Include="Resources\server32.dat" />
+      <None Remove="Resources\server4.dat" />
+      <Resource Include="Resources\server4.dat" />
+      <None Remove="Resources\server5.dat" />
+      <Resource Include="Resources\server5.dat" />
+      <None Remove="Resources\server6.dat" />
+      <Resource Include="Resources\server6.dat" />
+      <None Remove="Resources\server7.dat" />
+      <Resource Include="Resources\server7.dat" />
+      <None Remove="Resources\server8.dat" />
+      <Resource Include="Resources\server8.dat" />
+      <None Remove="Resources\server9.dat" />
+      <Resource Include="Resources\server9.dat" />
+      <None Remove="Resources\test.dat" />
+      <Resource Include="Resources\test.dat" />
+      <None Remove="Resources\twitter.html" />
+      <Resource Include="Resources\twitter.html" />
+      <None Remove="Logo.bmp" />
+      <Resource Include="Logo.bmp" />
+    </ItemGroup>
+
+</Project>
