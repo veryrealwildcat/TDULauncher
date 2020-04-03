@@ -3,6 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:tduWorldLauncher="clr-namespace:TDUWorldLauncher"
+        xmlns:cef="clr-namespace:CefSharp.Wpf;assembly=CefSharp.Wpf"
         mc:Ignorable="d"
         AllowDrop="True"
         WindowStyle="None"
@@ -14,8 +16,7 @@
         AllowsTransparency="True"
         Title="TDU World Launcher" Height="585" Width="1016">
     <Window.Resources>
- 
-    <Style x:Key="FocusVisual">
+        <Style x:Key="FocusVisual">
       <Setter Property="Control.Template">
         <Setter.Value>
           <ControlTemplate>
@@ -110,30 +111,20 @@
             <RowDefinition/>
             <RowDefinition Height="114"/>
         </Grid.RowDefinitions>
-        <WebBrowser x:Name="WebBrowser" Grid.Column="1" Grid.Row="1" Height="287" Width="551" Visibility="Hidden">
-        </WebBrowser>
         <Rectangle x:Name="BottomBar" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Fill="Black" Opacity="0.5"></Rectangle>
         <Rectangle x:Name="NewsWindow" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Fill="Black" Opacity="0.5"
-                   Height="378" Width="577" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 26 26"></Rectangle>
-        <!--<Image x:Name="Image1" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Source="Export/News window complete.png" 
-               Margin="0 0 26 26" VerticalAlignment="Bottom" HorizontalAlignment="Right"></Image>
-        <Image x:Name="Image2" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Source="Export/Bottom bar.png"
-               Margin="0 0 0 0" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"></Image>-->
+                   Height="387" Width="577" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 26 26"></Rectangle>
         <Ellipse x:Name="ServerStatus" Grid.Column="0" Grid.Row="1" Width="15" Height="15"
-               HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="115 0 0 22">
+                 HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="115 0 0 22">
         </Ellipse>
-        <!--<Image x:Name="PlayBtnPressedImage" Grid.Row="2" Grid.Column="1" Visibility="Hidden" Width="214" Height="73"  
-               Margin="0 20 24 21" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-               Source="Export/Launch button PRESSED.png" Cursor="AppStarting">
+        <cef:ChromiumWebBrowser x:Name="WebBrowser" OverridesDefaultStyle="False" IsBrowserInitializedChanged="WebBrowser_OnIsBrowserInitializedChanged" 
+                                Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Height="310" Width="551" Visibility="Hidden"
+                                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 63 40 0"
+                                FrameLoadEnd="OnBrowserFrameLoadEnd">
+        </cef:ChromiumWebBrowser>
+        <Image x:Name="NewsImage" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" HorizontalAlignment="Left" VerticalAlignment="Top"
+               Source="Export/News.png" Margin="639 30 0 0" Height="22" Width="124">
         </Image>
-        <Image x:Name="PlayBtnDisabledImage" Grid.Row="2" Grid.Column="1" Visibility="Hidden" Width="214" Height="73" 
-               Margin="0 20 24 21" HorizontalAlignment="Right" VerticalAlignment="Bottom"
-               Source="Export/Launch button DISABLED.png" Cursor="AppStarting">
-        </Image>
-        <Image x:Name="PlayBtnImage" Grid.Row="2" Grid.Column="1" Visibility="Visible" Width="214" Height="73"
-                  Margin="0 20 24 21" HorizontalAlignment="Right" VerticalAlignment="Bottom" 
-                  Source="Export/Launch button READY.png" Cursor="AppStarting">
-           </Image>-->
         <TextBlock x:Name="Movable" Cursor="Hand" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Height="50" Width="1016" 
                       MouseLeftButtonDown="PanelMove_OnMouseLeftButtonDown">
            </TextBlock>
@@ -145,10 +136,12 @@
             <Button.Background><ImageBrush ImageSource="Export/Launch button READY.png"/></Button.Background>
         </Button>
         <Image x:Name="Logo" Grid.Row="1" Grid.Column="0" Width="295" Height="144" HorizontalAlignment="Left" 
-               VerticalAlignment="Top" Source="Export/Launcher logo.png" Margin="62 17 62 0"></Image>
+               VerticalAlignment="Top" Source="Export/Launcher logo.png" Margin="62 17 62 0">
+        </Image>
         <Label x:Name="GameVersion" Grid.Row="2" Grid.Column="0" Content="TDU2 DLC2 v034 build 16 | TDU World Launcher v0.01" 
                Margin="17 0 0 17" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontFamily="Calibri"
-               FontSize="12" Background="Transparent"></Label>
+               FontSize="12" Background="Transparent">
+        </Label>
         <Label x:Name="Label1" Grid.Row="1" Grid.Column="0" Content="Server Status: " FontFamily="Calibri" FontSize="15"
                Foreground="LightGray" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
                Margin="17 0 0 17"></Label>
@@ -174,9 +167,11 @@
         </Label>
         <ProgressBar x:Name="Update1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 
                      HorizontalAlignment="Left" Margin="17 25 0 0" Height="16" Width="746" Background="DodgerBlue" 
-                     BorderThickness="0 0 0 0" Foreground="DodgerBlue"></ProgressBar>
+                     BorderThickness="0 0 0 0" Foreground="DodgerBlue">
+        </ProgressBar>
         <ProgressBar x:Name="Update2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 
                      HorizontalAlignment="Left" Margin="17 56 0 0" Height="16" Width="746" Background="LimeGreen" 
-                     BorderThickness="0 0 0 0" Foreground="LimeGreen"></ProgressBar>
+                     BorderThickness="0 0 0 0" Foreground="LimeGreen">
+        </ProgressBar>
     </Grid>
 </Window>

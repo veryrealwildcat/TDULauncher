@@ -8,6 +8,8 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Media;
+using CefSharp;
+using CefSharp.Wpf;
 using DiscordRPC;
 
 namespace TDUWorldLauncher
@@ -60,7 +62,6 @@ namespace TDUWorldLauncher
                 Label3.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#f15a24");
                 ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#f15a24");
             }
-            //WebBrowser.Source = new Uri("https://tduworld.com/");
         }
 
         public void ReadMultiplayer()
@@ -314,6 +315,34 @@ namespace TDUWorldLauncher
         private void Minimize_OnClick(object sender, RoutedEventArgs e)
         {
             WindowState =  WindowState.Minimized;
+        }
+
+        //TODO: Enable after realese
+        private void WebBrowser_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            /*dynamic activeX = WebBrowser.GetType().InvokeMember("ActiveXInstance",
+                            BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
+                            null, WebBrowser, new object[] { });
+             
+                    activeX.Silent = true;*/
+        }
+
+        private void WebBrowser_OnIsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            WebBrowser.Visibility = Visibility.Visible;
+            WebBrowser.LoadHtml(TDUWorldLauncher.Resources.twitter);
+        }
+
+        private void OnBrowserFrameLoadEnd(object sender, FrameLoadEndEventArgs args)
+        {
+            if (args.Frame.IsMain)
+            {
+                args
+                    .Browser
+                    .MainFrame
+                    .ExecuteJavaScriptAsync(
+                        "document.body.style.overflow = 'hidden'");
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
     <PropertyGroup>
+      <CefSharpAnyCpuSupport>true</CefSharpAnyCpuSupport>
         <OutputType>WinExe</OutputType>
         <TargetFramework>netcoreapp3.1</TargetFramework>
         <UseWPF>true</UseWPF>
@@ -9,10 +10,12 @@
     <ItemGroup>
       <Folder Include="AuthEmu" />
       <Folder Include="Export" />
+      <Folder Include="Properties" />
       <Folder Include="Resources" />
     </ItemGroup>
 
     <ItemGroup>
+      <PackageReference Include="CefSharp.Wpf" Version="79.1.360" />
       <PackageReference Include="DiscordRichPresence" Version="1.0.150" />
       <PackageReference Include="jQuery" Version="3.4.1" />
       <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
@@ -28,8 +31,6 @@
     <ItemGroup>
       <None Remove="48.ico" />
       <Resource Include="48.ico" />
-      <None Remove="Resources\Bottom bar.jpg" />
-      <Resource Include="Resources\Bottom bar.jpg" />
       <None Remove="Resources\f_header.dat" />
       <Resource Include="Resources\f_header.dat" />
       <None Remove="Resources\f_header_end.dat" />
@@ -54,10 +55,6 @@
       <Resource Include="Export\Additional info.PNG" />
       <None Remove="Export\Background.jpg" />
       <Resource Include="Export\Background.jpg" />
-      <None Remove="Export\Bottom bar.jpg" />
-      <Resource Include="Export\Bottom bar.jpg" />
-      <None Remove="Export\Bottom bar.png" />
-      <Resource Include="Export\Bottom bar.png" />
       <None Remove="Export\Exit button.png" />
       <Resource Include="Export\Exit button.png" />
       <None Remove="Export\Launch button DISABLED.png" />
@@ -72,23 +69,8 @@
       <Resource Include="Export\Minimize button.png" />
       <None Remove="Export\News text.png" />
       <Resource Include="Export\News text.png" />
-      <None Remove="Export\News window background insert.png" />
-      <Resource Include="Export\News window background insert.png" />
-      <None Remove="Export\News window background.png" />
-      <Resource Include="Export\News window background.png" />
-      <None Remove="Export\News window combined.png" />
-      <Resource Include="Export\News window combined.png" />
-      <None Remove="Export\News window complete.png" />
-      <Resource Include="Export\News window complete.png" />
       <None Remove="Export\News.png" />
       <Resource Include="Export\News.png" />
-      <None Remove="Export\Server icon MAINTENENCE.png" />
-      <None Remove="Export\Server icon OFFLINE.png" />
-      <Resource Include="Export\Server icon OFFLINE.png" />
-      <None Remove="Export\Server icon ONLINE.png" />
-      <Resource Include="Export\Server icon ONLINE.png" />
-      <None Remove="Export\Server icon UNKNOWN.png" />
-      <Resource Include="Export\Server icon UNKNOWN.png" />
       <None Remove="Export\TDU World Launcher icon.png" />
       <Resource Include="Export\TDU World Launcher icon.png" />
       <None Remove="Resources\inCasino1.dat" />
@@ -210,5 +192,4 @@
       <None Remove="Logo.bmp" />
       <Resource Include="Logo.bmp" />
     </ItemGroup>
-
 </Project>

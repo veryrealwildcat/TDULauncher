@@ -1,5 +1,10 @@
 ﻿using System;
+using System.IO;
+using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Threading;
+using CefSharp;
+using CefSharp.Wpf;
 using DiscordRPC;
 using TDUWorldLauncher.AuthEmu;
 
@@ -14,6 +19,16 @@ namespace TDUWorldLauncher
         private const DiscordRPC.Logging.LogLevel LogLevel = DiscordRPC.Logging.LogLevel.Trace;
         private const int DiscordPipe = -1;
 
+        public App()
+        {
+            //Add Custom assembly resolver
+            AppDomain.CurrentDomain.AssemblyResolve += Resolver;
+
+            //Any CefSharp references have to be in another method with NonInlining
+            // attribute so the assembly rolver has time to do it's thing.
+            InitializeCefSharp();
+        }
+        
         public static readonly RichPresence Start = new RichPresence
         {
             Details = "Playing TDU World",
@@ -136,6 +151,39 @@ namespace TDUWorldLauncher
             {
                 Start = DateTime.UtcNow,
             };
+        }
+        
+        [MethodImpl(MethodImplOptions.NoInlining)]
+        private static void InitializeCefSharp()
+        {
+            var settings = new CefSettings();
+
+            // Set BrowserSubProcessPath based on app bitness at runtime
+            settings.BrowserSubprocessPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
+                Environment.Is64BitProcess ? "x64" : "x86",
+                "CefSharp.BrowserSubprocess.exe");
+
+            // Make sure you set performDependencyCheck false
+            Cef.Initialize(settings, performDependencyCheck: false, browserProcessHandler: null);
+        }
+
+        // Will attempt to load missing assembly from either x86 or x64 subdir
+        // Required by CefSharp to load the unmanaged dependencies when running using AnyCPU
+        private static Assembly Resolver(object sender, ResolveEventArgs args)
+        {
+            if (args.Name.StartsWith("CefSharp"))
+            {
+                var assemblyName = args.Name.Split(new[] { ',' }, 2)[0] + ".dll";
+                var archSpecificPath = Path.Combine(AppDomain.CurrentDomain.SetupInformation.ApplicationBase,
+                    Environment.Is64BitProcess ? "x64" : "x86",
+                    assemblyName);
+
+                return File.Exists(archSpecificPath)
+                    ? Assembly.LoadFile(archSpecificPath)
+                    : null;
+            }
+
+            return null;
         }
     }
 }
