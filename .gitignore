@@ -1,3 +1,15 @@
+packages/
+/packages/
+*.suo
+*.DotSettings
+*.user
+_ReSharper.*/
 bin/
 obj/
-/packages/
+.nuget/
+Debug/
+Release/
+.idea/
+
+*/**/.vs/*
+.vs/*
