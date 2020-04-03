@@ -18,25 +18,25 @@ namespace TDUWorldLauncher.AuthEmu
             IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, 8889);
             try
             {
-                _log.print("Game Connected");
+                _log.Print("Game Connected");
                 while (true)
                 {
                     byte[] bytes = client.Receive(ref groupEP);
                     if(count != 1)
                     {
                         SendLogin(groupEP, client);
-                        _log.print("Loggin Thred");
+                        _log.Print("Loggin Thred");
                     }
                     else
                     {
                         AntiTimeOut(groupEP, client);
-                        _log.print("Timeout Thread");
+                        _log.Print("Timeout Thread");
                     }
                 }
             }
             catch (SocketException e)
             {
-                _log.print("Thread Crashed: " + e.ToString());
+                _log.Print("Thread Crashed: " + e.ToString());
             }
         }
 
@@ -163,13 +163,13 @@ namespace TDUWorldLauncher.AuthEmu
             client.Send(Resources.InCasino21, Resources.InCasino21.Length, cSock);
             Thread.Sleep(20);
             count = count + 1;
-            _log.print("Client is Here");
+            _log.Print("Client is Here");
         }
 
         public static void SendLogin(IPEndPoint cSock, UdpClient client)
         {
                 Logger _log = new Logger();
-                _log.print("Client Login");
+                _log.Print("Client Login");
                 client.Send(Resources.Server1, Resources.Server1.Length, cSock);
                 Thread.Sleep(35);
                 client.Send(Resources.Server2, Resources.Server2.Length, cSock);
@@ -280,7 +280,7 @@ namespace TDUWorldLauncher.AuthEmu
                 Thread.Sleep(35);
                 client.Send(Resources.InCasino21, Resources.InCasino21.Length, cSock);
                 Thread.Sleep(35);
-                _log.print("Client Login Done");
+                _log.Print("Client Login Done");
                 AntiTimeOut(cSock, client);
         }
 
