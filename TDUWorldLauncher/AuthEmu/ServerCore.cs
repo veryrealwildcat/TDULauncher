@@ -1,48 +1,45 @@
 ﻿using System.Net.Sockets;
 using System.Threading;
 using System.Net;
-using System.Windows;
-using TDUWorldLauncher;
-using Logging;
 
 namespace TDUWorldLauncher.AuthEmu
 {
-    public class ServerCore
+    public static class ServerCore
     {
         public static bool Firststart = false;
-        public static int count = 0;
+        public static int Count = 0;
         public static void StartListener()
         {
-            Logger _log = new Logger();
-            UdpClient client = new UdpClient(8889);
-            IPEndPoint groupEP = new IPEndPoint(IPAddress.Any, 8889);
+            var log = new Logger();
+            var client = new UdpClient(8889);
+            var groupEp = new IPEndPoint(IPAddress.Any, 8889);
             try
             {
-                _log.Print("Game Connected");
+                log.Print("Game Connected");
                 while (true)
                 {
-                    byte[] bytes = client.Receive(ref groupEP);
-                    if(count != 1)
+                    var bytes = client.Receive(ref groupEp);
+                    if(Count != 1)
                     {
-                        SendLogin(groupEP, client);
-                        _log.Print("Loggin Thred");
+                        SendLogin(groupEp, client);
+                        log.Print("Loggin Thred");
                     }
                     else
                     {
-                        AntiTimeOut(groupEP, client);
-                        _log.Print("Timeout Thread");
+                        AntiTimeOut(groupEp, client);
+                        log.Print("Timeout Thread");
                     }
                 }
             }
             catch (SocketException e)
             {
-                _log.Print("Thread Crashed: " + e.ToString());
+                log.Print("Thread Crashed: " + e);
             }
         }
 
         public static void AntiTimeOut(IPEndPoint cSock, UdpClient client)
         {
-            Logger _log = new Logger();
+            var log = new Logger();
             client.Send(Resources.InitCasino1, Resources.InitCasino1.Length, cSock);
             //   cSock.data = client.Receive(ref cSock.endPoint);
             client.Send(Resources.InitCasino2, Resources.InitCasino2.Length, cSock);
@@ -162,14 +159,14 @@ namespace TDUWorldLauncher.AuthEmu
             client.Send(Resources.InCasino20, Resources.InCasino20.Length, cSock);
             client.Send(Resources.InCasino21, Resources.InCasino21.Length, cSock);
             Thread.Sleep(20);
-            count = count + 1;
-            _log.Print("Client is Here");
+            Count = Count + 1;
+            log.Print("Client is Here");
         }
 
-        public static void SendLogin(IPEndPoint cSock, UdpClient client)
+        private static void SendLogin(IPEndPoint cSock, UdpClient client)
         {
-                Logger _log = new Logger();
-                _log.Print("Client Login");
+                var log = new Logger();
+                log.Print("Client Login");
                 client.Send(Resources.Server1, Resources.Server1.Length, cSock);
                 Thread.Sleep(35);
                 client.Send(Resources.Server2, Resources.Server2.Length, cSock);
@@ -280,7 +277,7 @@ namespace TDUWorldLauncher.AuthEmu
                 Thread.Sleep(35);
                 client.Send(Resources.InCasino21, Resources.InCasino21.Length, cSock);
                 Thread.Sleep(35);
-                _log.Print("Client Login Done");
+                log.Print("Client Login Done");
                 AntiTimeOut(cSock, client);
         }
 

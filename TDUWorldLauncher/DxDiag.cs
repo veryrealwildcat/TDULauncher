@@ -8,24 +8,24 @@ namespace TDUWorldLauncher
 {
     public class DxDiag
     {
-        private DxDiag.eStatus State;
-        private string b;
-        private string c;
-        private XmlDocument d;
+        private EStatus _state;
+        private string _b;
+        private string _c;
+        private XmlDocument _d;
 
         public DxDiag()
         {
-            this.State = DxDiag.eStatus.None;
-            this.b = (string)null;
-            this.c = (string)null;
-            this.d = (XmlDocument)null;
+            _state = EStatus.None;
+            _b = null;
+            _c = null;
+            _d = null;
         }
 
-        public DxDiag.eStatus Status
+        public EStatus Status
         {
             get
             {
-                return this.State;
+                return _state;
             }
         }
 
@@ -33,36 +33,36 @@ namespace TDUWorldLauncher
         {
             get
             {
-                return this.c;
+                return _c;
             }
             set
             {
-                this.c = value;
+                _c = value;
             }
         }
 
         public bool CollectInfo()
         {
-            if (string.IsNullOrEmpty(this.c))
+            if (string.IsNullOrEmpty(_c))
                 return false;
             
             try
             {
-                this.b = Environment.GetFolderPath(Environment.SpecialFolder.System);
-                if (!string.IsNullOrEmpty(this.b))
+                _b = Environment.GetFolderPath(Environment.SpecialFolder.System);
+                if (!string.IsNullOrEmpty(_b))
                 {
-                    if (!File.Exists(this.c))
+                    if (!File.Exists(_c))
                     {
-                        this.b += "\\dxdiag.exe";
-                        if (!File.Exists(this.b))
+                        _b += "\\dxdiag.exe";
+                        if (!File.Exists(_b))
                         {
-                            this.State = DxDiag.eStatus.Failed;
+                            _state = EStatus.Failed;
                             return false;
                         }
                         Process process = new Process();
-                        process.StartInfo.FileName = this.b;
-                        process.StartInfo.WorkingDirectory = Path.GetDirectoryName(this.c);
-                        process.StartInfo.Arguments = "/whql:off /x " + this.c;
+                        process.StartInfo.FileName = _b;
+                        process.StartInfo.WorkingDirectory = Path.GetDirectoryName(_c);
+                        process.StartInfo.Arguments = "/whql:off /x " + _c;
                         process.Start();
                         do
                         {
@@ -71,20 +71,20 @@ namespace TDUWorldLauncher
                         }
                         while (!process.HasExited);
                     }
-                    if (!File.Exists(this.c))
+                    if (!File.Exists(_c))
                         return false;
-                    this.d = new XmlDocument();
-                    using (FileStream fileStream = new FileStream(this.c, FileMode.Open))
+                    _d = new XmlDocument();
+                    using (FileStream fileStream = new FileStream(_c, FileMode.Open))
                     {
-                        this.d.Load((Stream)fileStream);
+                        _d.Load(fileStream);
                         fileStream.Close();
                     }
-                    if (this.d.ChildNodes.Count <= 0)
+                    if (_d.ChildNodes.Count <= 0)
                     {
-                        this.State = DxDiag.eStatus.Failed;
+                        _state = EStatus.Failed;
                         return false;
                     }
-                    this.State = DxDiag.eStatus.Ok;
+                    _state = EStatus.Ok;
                     return true;
                 }
             }
@@ -92,19 +92,19 @@ namespace TDUWorldLauncher
             {
                 Console.Write(ex);
             }
-            this.State = DxDiag.eStatus.Failed;
+            _state = EStatus.Failed;
             return false;
         }
 
-        public string GetValue(string a_strSection, string a_strName)
+        public string GetValue(string aStrSection, string aStrName)
         {
-            if (!string.IsNullOrEmpty(a_strSection) && !string.IsNullOrEmpty(a_strName) && this.d != null)
+            if (!string.IsNullOrEmpty(aStrSection) && !string.IsNullOrEmpty(aStrName) && _d != null)
             {
-                if (this.State == DxDiag.eStatus.Ok)
+                if (_state == EStatus.Ok)
                 {
                     try
                     {
-                        XmlNode xmlNode = this.d.SelectSingleNode("//" + a_strSection + "/" + a_strName);
+                        XmlNode xmlNode = _d.SelectSingleNode("//" + aStrSection + "/" + aStrName);
                         if (xmlNode != null)
                             return xmlNode.InnerText.Trim();
                     }
@@ -112,17 +112,17 @@ namespace TDUWorldLauncher
                     {
                         Console.Write(ex);
                     }
-                    return (string)null;
+                    return null;
                 }
             }
-            return (string)null;
+            return null;
         }
 
-        public ulong GetValueUInt(string a_strSection, string a_strName)
+        public ulong GetValueUInt(string aStrSection, string aStrName)
         {
             try
             {
-                string s = this.GetValue(a_strSection, a_strName);
+                string s = GetValue(aStrSection, aStrName);
                 if (string.IsNullOrEmpty(s))
                     return 0;
                 for (int length = 0; length < s.Length; ++length)
@@ -142,7 +142,7 @@ namespace TDUWorldLauncher
             return 0;
         }
 
-        public enum eStatus
+        public enum EStatus
         {
             None,
             Failed,

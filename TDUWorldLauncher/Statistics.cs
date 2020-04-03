@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Diagnostics;
-using System.Globalization;
 using System.IO;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Web;
 
 namespace TDUWorldLauncher
 {
     class Statistics
     {
-        public static bool canRun = true;
+        public static bool CanRun = true;
 
         public static string GameKey;
 
@@ -25,14 +15,14 @@ namespace TDUWorldLauncher
             {
                 File.Create("TDU_World.localdb");
                 GameKey = File.ReadAllText("key.txt");
-                canRun = true;
-                File.WriteAllText("TDU_World.localdb", GameKey.ToString());
+                CanRun = true;
+                File.WriteAllText("TDU_World.localdb", GameKey);
 
                 Console.WriteLine(GameKey);
             }
             else
             {
-                canRun = true;
+                CanRun = true;
             }
         }
     }

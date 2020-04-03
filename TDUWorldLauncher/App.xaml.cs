@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading;
 using DiscordRPC;
-using Logging;
 using TDUWorldLauncher.AuthEmu;
 
 namespace TDUWorldLauncher

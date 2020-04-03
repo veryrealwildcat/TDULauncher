@@ -2,11 +2,11 @@
 using System.IO;
 using System.Text;
 
-namespace Logging
+namespace TDUWorldLauncher
 {
     public class Logger
     {
-        string LogPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments) + "/TDU_WORLD" + "/LOGS/";
+        string LogPath = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "/TDU_WORLD" + "/LOGS/";
 
         public void CheckLogs()
         {
@@ -36,7 +36,7 @@ namespace Logging
             var fs = new FileStream(LogPath + "output.log", FileMode.Append, FileAccess.Write, FileShare.Write);
             fs.Close();
             var sw = new StreamWriter(LogPath + "output.log", true, Encoding.ASCII);
-            sw.Write(DateTime.Now.ToString("HH:mm:ss->") + "ORB: " + input.ToString() + " \n");
+            sw.Write(DateTime.Now.ToString("HH:mm:ss->") + "ORB: " + input + " \n");
             sw.Close();
         }
     }
