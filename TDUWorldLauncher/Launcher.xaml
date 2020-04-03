@@ -117,7 +117,7 @@
         <Ellipse x:Name="ServerStatus" Grid.Column="0" Grid.Row="1" Width="15" Height="15"
                  HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="115 0 0 22">
         </Ellipse>
-        <cef:ChromiumWebBrowser x:Name="WebBrowser" OverridesDefaultStyle="False" IsBrowserInitializedChanged="WebBrowser_OnIsBrowserInitializedChanged" 
+        <cef:ChromiumWebBrowser x:Name="WebBrowser" IsBrowserInitializedChanged="WebBrowser_OnIsBrowserInitializedChanged" 
                                 Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Height="310" Width="551" Visibility="Hidden"
                                 HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0 63 40 0"
                                 FrameLoadEnd="OnBrowserFrameLoadEnd">
