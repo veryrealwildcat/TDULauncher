@@ -33,6 +33,9 @@ namespace TDUWorldLauncher
         public Launcher()
         {
             InitializeComponent();
+            
+            DwmDropShadow.DropShadowToWindow(this);
+            
             //ReadMultiplayer();
             ReadIp();
             CheckServer();
@@ -316,19 +319,14 @@ namespace TDUWorldLauncher
             WindowState =  WindowState.Minimized;
         }
 
-        //TODO: Enable after realese
-        private void WebBrowser_OnLoaded(object sender, RoutedEventArgs e)
-        {
-            /*dynamic activeX = WebBrowser.GetType().InvokeMember("ActiveXInstance",
-                            BindingFlags.GetProperty | BindingFlags.Instance | BindingFlags.NonPublic,
-                            null, WebBrowser, new object[] { });
-             
-                    activeX.Silent = true;*/
-        }
-
         private void WebBrowser_OnIsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
+            var culture = System.Globalization.CultureInfo.CurrentCulture;
             WebBrowser.Visibility = Visibility.Visible;
+            if (culture.ToString() == "ru-RU")
+            {
+                
+            }
             WebBrowser.LoadHtml(TDUWorldLauncher.Resources.twitter);
         }
 
@@ -343,5 +341,7 @@ namespace TDUWorldLauncher
                         "document.body.style.overflow = 'hidden'");
             }
         }
+        
+        
     }
 }
