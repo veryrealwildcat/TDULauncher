@@ -28,20 +28,18 @@
         </Setter.Value>
       </Setter>
     </Style>
- 
-    <SolidColorBrush x:Key="Button.Static.Background"
+        <SolidColorBrush x:Key="Button.Static.Background"
+                         Color="Transparent" />
+        <SolidColorBrush x:Key="Button.Static.Border"
                      Color="Transparent" />
-    <SolidColorBrush x:Key="Button.Static.Border"
+        <SolidColorBrush x:Key="Button.Pressed.Border"
                      Color="Transparent" />
-    <SolidColorBrush x:Key="Button.Pressed.Border"
+        <SolidColorBrush x:Key="Button.Disabled.Border"
                      Color="Transparent" />
-    <SolidColorBrush x:Key="Button.Disabled.Border"
+        <SolidColorBrush x:Key="Button.Disabled.Foreground"
                      Color="Transparent" />
-    <SolidColorBrush x:Key="Button.Disabled.Foreground"
-                     Color="Transparent" />
- 
-    <Style x:Key="DefaultButtonStyle"
-           TargetType="{x:Type Button}">
+        <Style x:Key="DefaultButtonStyle"
+               TargetType="{x:Type Button}">
       <Setter Property="FocusVisualStyle" Value="{StaticResource FocusVisual}" />
       <Setter Property="Background" Value="{StaticResource Button.Static.Background}" />
       <Setter Property="BorderBrush" Value="{StaticResource Button.Static.Border}" />
@@ -100,7 +98,6 @@
     <Window.Background>
         <ImageBrush ImageSource="Export/Background.jpg"/>
     </Window.Background>
-    
     <Grid x:Name="MainGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -169,24 +166,24 @@
             <Image Source="Export/Minimize button.png"></Image>
         </Button>
         <ProgressBar x:Name="Update1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 
-                     HorizontalAlignment="Left" Margin="17 25 0 0" Height="16" Width="746" 
-                     BorderBrush="#1a4d64" BorderThickness="1 1 0 1"> 
-            <ProgressBar.Background>
+                     HorizontalAlignment="Left" Margin="17 25 0 0" Height="16" Width="746" Background="Silver"
+                     BorderBrush="DimGray" BorderThickness="1 1 0 1">
+            <ProgressBar.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#29ABE2" Offset="0"/>
                     <GradientStop Color="#0071BC" Offset="1"/>
                 </LinearGradientBrush>
-            </ProgressBar.Background>
+            </ProgressBar.Foreground>
         </ProgressBar>
         <ProgressBar x:Name="Update2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 
-                     HorizontalAlignment="Left" Margin="17 56 0 0" Height="16" Width="746"  
-                     BorderBrush="#2b873a" BorderThickness="1 0 0 1">
-            <ProgressBar.Background>
+                     HorizontalAlignment="Left" Margin="17 56 0 0" Height="16" Width="746" Background="Silver"
+                     BorderBrush="DimGray" BorderThickness="1 0 0 1">
+            <ProgressBar.Foreground>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#8CC63F" Offset="0"/>
                     <GradientStop Color="#39B54A" Offset="1"/>
                 </LinearGradientBrush>
-            </ProgressBar.Background>
+            </ProgressBar.Foreground>
         </ProgressBar>
     </Grid>
 </Window>

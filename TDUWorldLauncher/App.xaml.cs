@@ -29,7 +29,7 @@ namespace TDUWorldLauncher
             InitializeCefSharp();
         }
         
-        public static readonly RichPresence Start = new RichPresence
+        public static readonly RichPresence Start = new RichPresence()
         {
             Details = "Playing TDU World",
             State = " Game Launcher Started ",
@@ -37,10 +37,10 @@ namespace TDUWorldLauncher
             {
                 LargeImageKey = "logo-bg",
                 LargeImageText = "Test Drive Unlimited 2",
-                SmallImageKey = ""
+                SmallImageKey = "tdu_udating_512x512"
             }
         };
-        public static readonly RichPresence Online = new RichPresence
+        public static readonly RichPresence Online = new RichPresence()
         {
             Details = "Playing TDU World",
             State = "Playing in Online Mode",
@@ -48,22 +48,21 @@ namespace TDUWorldLauncher
             {
                 LargeImageKey = "logo-bg",
                 LargeImageText = "Test Drive Unlimited 2",
-                SmallImageKey = ""
+                SmallImageKey = "tdu_online_512x512"
             }
         };
-        public static readonly RichPresence Offline = new RichPresence
+        public static readonly RichPresence Offline = new RichPresence()
         {
             Details = "Playing TDU World",
             State = "Playing in Offline Mode",
-            Assets = new Assets
+            Assets = new Assets()
             {
                 LargeImageKey = "logo-bg",
                 LargeImageText = "Test Drive Unlimited 2",
-                SmallImageKey = ""
+                SmallImageKey = "tdu_offline_512x512"
             }
         };
-
-        public static readonly RichPresence Unknown = new RichPresence
+        public static readonly RichPresence Unknown = new RichPresence()
         {
             Details = "Playing TDU World",
             State = " Unknown Gamestate ",
@@ -71,11 +70,10 @@ namespace TDUWorldLauncher
             {
                 LargeImageKey = "logo-bg",
                 LargeImageText = "Test Drive Unlimited 2",
-                SmallImageKey = ""
+                SmallImageKey = "tdu_udating_512x512"
             }
         };
-
-        public static readonly RichPresence GameUpdate = new RichPresence
+        public static readonly RichPresence GameUpdate = new RichPresence()
         {
             Details = "Playing TDU World",
             State = " Updating Game Files ",
@@ -83,7 +81,7 @@ namespace TDUWorldLauncher
             {
                 LargeImageKey = "logo-bg",
                 LargeImageText = "Test Drive Unlimited 2",
-                SmallImageKey = ""
+                SmallImageKey = "tdu_udating_512x512"
             }
         };
 
