@@ -30,6 +30,22 @@ namespace TDUWorldLauncher
         private System.ComponentModel.IContainer components = null;
         private readonly string _gameDir = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + "/";
         private RichPresence _stateRpc = App.Offline;
+
+        private void FillEllipseWithPathGradient(GradientStop a, GradientStop b)
+        {
+            var pthGrBrush = new LinearGradientBrush
+            {
+                EndPoint = new Point(0.5,1),
+                StartPoint = new Point(0.5, 0),
+                GradientStops = new GradientStopCollection
+                {
+                    a,
+                    b
+                }
+            };
+
+            ServerStatus.Fill = pthGrBrush;
+        }
         public Launcher()
         {
             InitializeComponent();
@@ -43,26 +59,26 @@ namespace TDUWorldLauncher
             if (_pingChecked && _state == 1)
             {
                 ServerStatusLabel.Content = "Online";
-                ServerStatusLabel.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#39b54a");
-                ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#39b54a");
+                FillEllipseWithPathGradient(new GradientStop(Color.FromRgb(137, 197, 63), 0),
+                    new GradientStop(Color.FromRgb(62, 182, 73), 1));
             }
             if (_pingChecked && _state == 2)
             {
-                ServerStatusLabel.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#ff0000");
                 ServerStatusLabel.Content = "Offline";
-                ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#ff0000");
+                FillEllipseWithPathGradient(new GradientStop(Color.FromRgb(250, 3, 4), 0),
+                    new GradientStop(Color.FromRgb(198, 36, 42), 1));
             }
             if (_pingChecked && _state == 3)
             {
                 ServerStatusLabel.Content = "Unknown";
-                ServerStatusLabel.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#808080");
-                ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#808080");
+                FillEllipseWithPathGradient(new GradientStop(Color.FromRgb(137, 197, 63), 0),
+                    new GradientStop(Color.FromRgb(62, 182, 73), 1));
             }
             if (_pingChecked && _state == 4)
             {
                 ServerStatusLabel.Content = "Updating";
-                ServerStatusLabel.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#f15a24");
-                ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#f15a24");
+                FillEllipseWithPathGradient(new GradientStop(Color.FromRgb(228, 228, 228), 0),
+                    new GradientStop(Color.FromRgb(158, 158, 158), 1));
             }
         }
 
@@ -98,128 +114,128 @@ namespace TDUWorldLauncher
                         _state = 2;
                         break;
                     case IPStatus.Unknown:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.DestinationNetworkUnreachable:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.DestinationHostUnreachable:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.DestinationProhibited:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.DestinationPortUnreachable:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.NoResources:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.BadOption:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.HardwareError:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.PacketTooBig:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.BadRoute:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.TtlExpired:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.TtlReassemblyTimeExceeded:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.ParameterProblem:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.SourceQuench:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.BadDestination:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.DestinationUnreachable:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.TimeExceeded:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.BadHeader:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.UnrecognizedNextHeader:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.IcmpError:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
                     case IPStatus.DestinationScopeMismatch:
-                        _stateRpc = App.Offline;
-                        App.Start.Details = "Server Unknown";
+                        _stateRpc = App.Unknown;
+                        App.Unknown.Details = "Server Unknown";
                         _gameType = "957e4cc3";
                         _state = 3;
                         break;
