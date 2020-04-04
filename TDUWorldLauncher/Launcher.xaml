@@ -114,7 +114,7 @@
         <Rectangle x:Name="NewsWindow" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Fill="Black" Opacity="0.5"
                    Height="387" Width="577" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 26 26"></Rectangle>
         <Ellipse x:Name="ServerStatus" Grid.Column="0" Grid.Row="1" Width="15" Height="15"
-                 HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="115 0 0 22">
+                 HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="115 0 0 20">
         </Ellipse>
         <cef:ChromiumWebBrowser x:Name="WebBrowser" IsBrowserInitializedChanged="WebBrowser_OnIsBrowserInitializedChanged" 
                                 Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Height="310" Width="551" Visibility="Hidden"
@@ -138,12 +138,12 @@
                VerticalAlignment="Top" Source="Export/Launcher logo.png" Margin="62 17 62 0">
         </Image>
         <Label x:Name="GameVersion" Grid.Row="2" Grid.Column="0" Content="TDU2 DLC2 v034 build 16 | TDU World Launcher v0.01" 
-               Margin="17 0 0 17" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontFamily="Calibri"
-               FontSize="12" Background="Transparent">
+               Margin="13 0 0 13" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontFamily="Calibri"
+               FontSize="14" Background="Transparent">
         </Label>
-        <Label x:Name="Label1" Grid.Row="1" Grid.Column="0" Content="Server Status: " FontFamily="Calibri" FontSize="15"
+        <Label x:Name="ServerStatusLabel1" Grid.Row="1" Grid.Column="0" Content="Server Status: " FontFamily="Calibri" FontSize="14"
                Foreground="LightGray" Background="Transparent" VerticalAlignment="Bottom" HorizontalAlignment="Left" 
-               Margin="17 0 0 17"></Label>
+               Margin="13 0 0 13"></Label>
         <Button x:Name="Close" Grid.Column="1" Grid.Row="0" Background="Transparent" Cursor="Hand" BorderThickness="0 0 0 0" 
                 Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0 10 10 0"
                 FontFamily="Microsoft Sans Serif" FontSize="36" FontStyle="Normal" Foreground="White"
@@ -156,12 +156,12 @@
                 Click="Minimize_OnClick" Height="29" Width="30" VerticalAlignment="Top" HorizontalAlignment="Right">
             <Image Source="Export/Minimize button.png"></Image>
         </Button>
-        <Label x:Name="Label2" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Content="TDU World Launcher" HorizontalAlignment="Center" 
-                              VerticalAlignment="Top" Margin="0 10 00 0" FontSize="14" FontFamily="Calibri Light" Cursor="Hand"
+        <Label x:Name="TitleLabel" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Content="TDU World Launcher" HorizontalAlignment="Center" 
+                              VerticalAlignment="Top" Margin="0 10 00 0" FontSize="16" FontFamily="Calibri Light" Cursor="Hand"
                               Background="Transparent" Foreground="Ivory" MouseLeftButtonDown="PanelMove_OnMouseLeftButtonDown">
         </Label>
-        <Label x:Name="Label3" Grid.Row="1" Grid.Column="0" Content="Offline" 
-               HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="135 0 0 16" FontSize="15" FontFamily="Calibri"
+        <Label x:Name="ServerStatusLabel" Grid.Row="1" Grid.Column="0" Content="Offline" 
+               HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="135 0 0 15" FontSize="15" FontFamily="Calibri"
                Background="Transparent" Foreground="Red">
         </Label>
         <ProgressBar x:Name="Update1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 

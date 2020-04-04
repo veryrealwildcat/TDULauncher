@@ -39,26 +39,26 @@ namespace TDUWorldLauncher
 
             if (_pingChecked && _state == 1)
             {
-                Label3.Content = "Online";
-                Label3.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#39b54a");
+                ServerStatusLabel.Content = "Online";
+                ServerStatusLabel.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#39b54a");
                 ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#39b54a");
             }
             if (_pingChecked && _state == 2)
             {
-                Label3.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#ff0000");
-                Label3.Content = "Offline";
+                ServerStatusLabel.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#ff0000");
+                ServerStatusLabel.Content = "Offline";
                 ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#ff0000");
             }
             if (_pingChecked && _state == 3)
             {
-                Label3.Content = "Unknown";
-                Label3.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#808080");
+                ServerStatusLabel.Content = "Unknown";
+                ServerStatusLabel.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#808080");
                 ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#808080");
             }
             if (_pingChecked && _state == 4)
             {
-                Label3.Content = "Updating";
-                Label3.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#f15a24");
+                ServerStatusLabel.Content = "Updating";
+                ServerStatusLabel.Foreground = (SolidColorBrush)new BrushConverter().ConvertFrom("#f15a24");
                 ServerStatus.Fill = (SolidColorBrush)new BrushConverter().ConvertFrom("#f15a24");
             }
         }
