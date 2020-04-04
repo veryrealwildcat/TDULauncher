@@ -100,6 +100,7 @@
     <Window.Background>
         <ImageBrush ImageSource="Export/Background.jpg"/>
     </Window.Background>
+    
     <Grid x:Name="MainGrid" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -128,9 +129,8 @@
         <TextBlock x:Name="Movable" Cursor="Hand" Grid.Row="0" Grid.ColumnSpan="2" Grid.Column="0" Height="50" Width="1016" 
                       MouseLeftButtonDown="PanelMove_OnMouseLeftButtonDown">
            </TextBlock>
-        <Button x:Name="PlayBtn" Grid.Row="2" Grid.Column="1" TabIndex="0"
-                FontFamily="Microsoft Sans Serif" FontSize="36" FontStyle="Normal" Click="PlayBtn_Click"
-                Style="{DynamicResource DefaultButtonStyle}" Width="215" Height="74" Margin="0 20 24 21"
+        <Button x:Name="PlayBtn" Grid.Row="2" Grid.Column="1" TabIndex="0" Click="PlayBtn_Click"
+                Style="{DynamicResource DefaultButtonStyle}" Width="215" Height="68" Margin="0 20 24 24"
                 HorizontalAlignment="Right" VerticalAlignment="Bottom" Foreground="White"
                 BorderThickness="0 0 0 0">
             <Button.Background><ImageBrush ImageSource="Export/Launch button READY.png"/></Button.Background>
@@ -147,14 +147,14 @@
             <Ellipse x:Name="ServerStatus" Width="15" Height="15" Margin="0 0 0 5"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" >
             </Ellipse>
-            <Label x:Name="ServerStatusLabel" Grid.Row="1" Grid.Column="0" Content="Offline"
+            <Label x:Name="ServerStatusLabel" Content="Offline"
                    HorizontalAlignment="Left" VerticalAlignment="Bottom" FontSize="15" FontFamily="Calibri"
                    Background="Transparent" Foreground="Red">
             </Label>
         </StackPanel>
         <Label x:Name="GameVersion" Grid.Row="2" Grid.Column="0" Content="TDU2 DLC2 v034 build 16 | TDU World Launcher v0.01" 
                Margin="13 0 0 10" HorizontalAlignment="Left" VerticalAlignment="Bottom" Foreground="Gray" FontFamily="Calibri"
-               FontSize="14" Background="Transparent">
+               FontSize="15" Background="Transparent">
         </Label>
         <Button x:Name="Close" Grid.Column="1" Grid.Row="0" Background="Transparent" Cursor="Hand" BorderThickness="0 0 0 0" 
                 Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" Margin="0 10 10 0"
@@ -169,12 +169,24 @@
             <Image Source="Export/Minimize button.png"></Image>
         </Button>
         <ProgressBar x:Name="Update1" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 
-                     HorizontalAlignment="Left" Margin="17 25 0 0" Height="16" Width="746" Background="DodgerBlue" 
-                     BorderThickness="0 0 0 0" Foreground="DodgerBlue">
+                     HorizontalAlignment="Left" Margin="17 25 0 0" Height="16" Width="746" 
+                     BorderBrush="#1a4d64" BorderThickness="1 1 0 1"> 
+            <ProgressBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#29ABE2" Offset="0"/>
+                    <GradientStop Color="#0071BC" Offset="1"/>
+                </LinearGradientBrush>
+            </ProgressBar.Background>
         </ProgressBar>
         <ProgressBar x:Name="Update2" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Top" 
-                     HorizontalAlignment="Left" Margin="17 56 0 0" Height="16" Width="746" Background="LimeGreen" 
-                     BorderThickness="0 0 0 0" Foreground="LimeGreen">
+                     HorizontalAlignment="Left" Margin="17 56 0 0" Height="16" Width="746"  
+                     BorderBrush="#2b873a" BorderThickness="1 0 0 1">
+            <ProgressBar.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#8CC63F" Offset="0"/>
+                    <GradientStop Color="#39B54A" Offset="1"/>
+                </LinearGradientBrush>
+            </ProgressBar.Background>
         </ProgressBar>
     </Grid>
 </Window>

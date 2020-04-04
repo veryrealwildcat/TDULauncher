@@ -14,8 +14,6 @@
     <ItemGroup>
       <Folder Include="AuthEmu" />
       <Folder Include="Export" />
-      <Folder Include="Properties" />
-      <Folder Include="Resources" />
     </ItemGroup>
 
     <ItemGroup>
