@@ -8,10 +8,12 @@
         <Authors>TDU World Team</Authors>
         <Company>TDU World Team</Company>
         <Product>TDU World Launcher</Product>
-      <applicationicon>48.ico</applicationicon>
+      <applicationicon>favicon.ico</applicationicon>
       <AssemblyVersion>0.1.0</AssemblyVersion>
       <FileVersion>0.1.0</FileVersion>
       <NeutralLanguage>en</NeutralLanguage>
+      <Configurations>Debug;Release</Configurations>
+      <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
 
     <ItemGroup>
@@ -33,7 +35,6 @@
 
     <ItemGroup>
       <None Remove="48.ico" />
-      <Resource Include="48.ico" />
       <None Remove="Resources\f_header.dat" />
       <Resource Include="Resources\f_header.dat" />
       <None Remove="Resources\f_header_end.dat" />
@@ -193,6 +194,9 @@
       <None Remove="Resources\twitter.html" />
       <Resource Include="Resources\twitter.html" />
       <None Remove="Logo.bmp" />
-      <Resource Include="Logo.bmp" />
+      <None Remove="kdwdpxc3ghi_ieR_icon.ico" />
+      <None Remove="kdwdpxc3ghi_iHI_icon.ico" />
+      <None Remove="kdwdpxc3ghi_jZi_icon.ico" />
+      <Resource Include="favicon.ico" />
     </ItemGroup>
 </Project>

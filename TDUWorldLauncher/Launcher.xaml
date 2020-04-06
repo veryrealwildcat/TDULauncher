@@ -9,7 +9,7 @@
         WindowStyle="None"
         ShowInTaskbar="True"
         WindowStartupLocation="CenterScreen"
-        Icon="48.ico"
+        Icon="favicon.ico"
         Foreground="Green"
         ResizeMode="NoResize"
         AllowsTransparency="True"
