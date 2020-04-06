@@ -1,4 +1,5 @@
-﻿using System;
+﻿#nullable enable
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
@@ -337,8 +338,8 @@ namespace TDUWorldLauncher
 
         private void WebBrowser_OnIsBrowserInitializedChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
-            var culture = System.Globalization.CultureInfo.CurrentCulture;
             WebBrowser.Visibility = Visibility.Visible;
+            var culture = System.Globalization.CultureInfo.CurrentCulture;
             if (culture.ToString() == "ru-RU")
             {
                 
@@ -357,7 +358,11 @@ namespace TDUWorldLauncher
                         "document.body.style.overflow = 'hidden'");
             }
         }
-        
-        
+
+
+        private void Launcher_OnClosed(object? sender, EventArgs e)
+        {
+            WebBrowser.Dispose();
+        }
     }
 }
