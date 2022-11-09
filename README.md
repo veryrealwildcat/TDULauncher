@@ -1,2 +1,2 @@
 # TDULauncher
-Cat's forked TDUW launcher :trol:
+Redesigned and rebranded TDU World offine launcher for my own use :)
