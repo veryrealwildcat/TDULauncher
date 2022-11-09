@@ -1,2 +1,2 @@
 # TDULauncher
-Redesigned and rebranded TDU World offine launcher for my own use :)
+Redesigned and rebranded TDU World offline launcher for my own use :)
